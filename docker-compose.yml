@@ -1,0 +1,31 @@
+services:
+  postgres:
+    container_name: pgcontainer
+    image: postgres:14.4
+    environment:
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+      POSTGRES_PASSWORD: ${pgsqlpass}
+      POSTGRES_DB: ${dbname}
+      POSTGRES_USER: ${dbuser}
+    volumes:
+      - ./Database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./Database/databasedata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${dbuser} -d ${dbname}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  nats-streaming:
+    container_name: natsstreamingcontainer
+    image: nats-streaming:0.24.6
+    command:
+      - "--store"
+      - "file"
+      - "--dir"
+      - "data"
+    ports:
+      - "4222:4222"
+      - "8222:8222"

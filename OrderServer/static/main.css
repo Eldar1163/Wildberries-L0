@@ -1,0 +1,16 @@
+h1 {
+    text-align:center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+textarea {
+    width: 500px;
+    height: 600px;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/main.css">
+    <title>Not Found</title>
+</head>
+<body>
+    <h1>Not found order with specified uid! Please retry.</h1>
+    <br>
+    <div>
+        <form action="" method="post">
+            <label for="uid">Enter UID</label>
+            <br>
+            <input type="text" name="uid" id="uid">
+            <br>
+            <input type="submit" value="Show order">
+            <br>
+            <textarea readonly>{{ .order }}</textarea>
+        </form>
+    </div>
+</body>
+</html>
